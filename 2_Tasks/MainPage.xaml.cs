@@ -1,0 +1,27 @@
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+
+namespace _2_Tasks
+{
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        private void OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var backgroundScheduler = TaskScheduler.Default;
+            var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            var task1 = Task.Factory.StartNew(_ => { Thread.Sleep(TimeSpan.FromSeconds(3)); }, backgroundScheduler);
+            var task2 = task1.ContinueWith(_ => { MyTextBlock.Text = "Almost done..."; }, uiScheduler);
+            var task3 = task2.ContinueWith(_ => { Thread.Sleep(TimeSpan.FromSeconds(3)); }, backgroundScheduler);
+            var task4 = task3.ContinueWith(_ => { MyTextBlock.Text = "Done!"; }, uiScheduler);
+            MyTextBlock.Text = "Working...";
+        }
+    }
+}
