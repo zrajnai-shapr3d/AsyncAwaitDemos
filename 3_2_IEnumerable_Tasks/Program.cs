@@ -57,5 +57,4 @@ static Task CopyStreamToStreamAsync(Stream source, Stream destination) {
     }
 
     return CombineTasks(GetTasks(source, destination));
-
 }

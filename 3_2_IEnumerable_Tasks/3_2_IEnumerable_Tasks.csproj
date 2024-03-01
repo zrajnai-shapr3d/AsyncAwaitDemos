@@ -6,6 +6,7 @@
     <RootNamespace>_3_2_IEnumerable_Tasks</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
