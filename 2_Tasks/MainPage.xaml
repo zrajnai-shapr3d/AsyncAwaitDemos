@@ -2,16 +2,23 @@
     x:Class="_2_Tasks.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:_2_Tasks"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:_2_Tasks"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20" Tapped="OnTapped">
-            <Button Content = "Click me!" Padding="30,10"/>
-            <TextBlock Name="MyTextBlock" Text="-"/>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="20"
+            Tapped="OnTapped">
+            <Button Padding="30,10" Content="Click me!" />
+            <TextBlock
+                Name="MyTextBlock"
+                HorizontalAlignment="Center"
+                Text="-" />
         </StackPanel>
     </Grid>
 </Page>
