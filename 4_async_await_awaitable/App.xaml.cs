@@ -1,8 +1,10 @@
 ﻿using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Navigation;
 
-namespace _4_async_await {
+namespace _4_async_await_awaitable {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -12,6 +14,8 @@ namespace _4_async_await {
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App() {
+            ApplicationView.PreferredLaunchViewSize = new Size(500, 500);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

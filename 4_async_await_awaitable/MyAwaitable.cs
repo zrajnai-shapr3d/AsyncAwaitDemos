@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace _4_async_await {
+namespace _4_async_await_awaitable {
   public class MyAwaitable(string value) {
     public MyAwaiter GetAwaiter() => new(value);
 

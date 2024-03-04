@@ -12,13 +12,18 @@
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Spacing="20"
-            Tapped="OnTapped">
-            <Button Padding="30,10" Content="Click me!" />
+            Spacing="20">
             <TextBlock
                 Name="MyTextBlock"
                 HorizontalAlignment="Center"
+                FontSize="20"
                 Text="-" />
+            <Button
+                Margin="5"
+                Padding="30,5"
+                Content="Click me!"
+                FontSize="20"
+                Tapped="OnTapped" />
         </StackPanel>
     </Grid>
 </Page>

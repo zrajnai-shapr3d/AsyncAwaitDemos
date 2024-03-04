@@ -1,4 +1,6 @@
-﻿using (IEnumerator<int> e = Fib().GetEnumerator()) {
+﻿#region Main 
+
+using (IEnumerator<int> e = Fib().GetEnumerator()) {
     while (e.MoveNext()) {
         int i = e.Current;
         if (i > 100) break;
@@ -6,6 +8,8 @@
     }
 }
 Console.WriteLine();
+
+#endregion
 
 static IEnumerable<int> Fib() {
     int prev = 0, next = 1;
