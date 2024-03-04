@@ -1,26 +1,26 @@
 ﻿using System.Threading;
 
-namespace _1_SynchronizationContext {
-    public sealed partial class MainPage : Page {
-        public MainPage() {
-            InitializeComponent();
-        }
+namespace _1_SynchronizationContext;
 
-        private void OnTapped(object sender, TappedRoutedEventArgs e) {
-            // We're on the UI thread here
-            var syncContext = SynchronizationContext.Current;
+public sealed partial class MainPage : Page {
+    public MainPage() {
+        InitializeComponent();
+    }
 
-            ThreadPool.QueueUserWorkItem(_ => {
-                // We're on a thread pool thread here
-                Thread.Sleep(TimeSpan.FromSeconds(5));
-                syncContext.Post(_ => {
-                    // We're back on the UI thread here
-                    MyTextBlock.Text = "Done!";
-                }, null);
-                // Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => { MyTextBlock.Text = "Done!"; });
-            });
+    private void OnTapped(object sender, TappedRoutedEventArgs e) {
+        // We're on the UI thread here
+        var syncContext = SynchronizationContext.Current;
 
-            MyTextBlock.Text = "Working...";
-        }
+        ThreadPool.QueueUserWorkItem(_ => {
+            // We're on a thread pool thread here
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            syncContext.Post(_ => {
+                // We're back on the UI thread here
+                MyTextBlock.Text = "Done!";
+            }, null);
+            // Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => { MyTextBlock.Text = "Done!"; });
+        });
+
+        MyTextBlock.Text = "Working...";
     }
 }
