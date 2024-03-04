@@ -10,10 +10,10 @@ namespace _1_SynchronizationContext {
             // We're on the UI thread here
             var syncContext = SynchronizationContext.Current;
 
-            ThreadPool.QueueUserWorkItem(state => {
+            ThreadPool.QueueUserWorkItem(_ => {
                 // We're on a thread pool thread here
                 Thread.Sleep(TimeSpan.FromSeconds(5));
-                syncContext.Post(o => {
+                syncContext.Post(_ => {
                     // We're back on the UI thread here
                     MyTextBlock.Text = "Done!";
                 }, null);
