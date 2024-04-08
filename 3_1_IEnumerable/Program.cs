@@ -1,11 +1,8 @@
 ﻿#region Main 
 
-using (IEnumerator<int> e = Fib().GetEnumerator()) {
-    while (e.MoveNext()) {
-        int i = e.Current;
-        if (i > 100) break;
-        Console.Write(i + " ");
-    }
+foreach (var num in Fib()) {
+    if (num > 100) break;
+    Console.Write(num + " ");
 }
 Console.WriteLine();
 

@@ -1,5 +1,5 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace _5_task_examples;
 
@@ -10,21 +10,15 @@ public sealed partial class MainPage : Page {
 
     private void OnTapped(object sender, TappedRoutedEventArgs e) {
         MyTextBlock.Text = "Starting.";
+        MyTextBlock.TextWrapping = TextWrapping.Wrap;
 
-        var s = LoadStringAsync();
+        var task = GetStringAsync();
 
-        MyTextBlock.Text = s.Result;
-    }
-    private async Task<string> LoadStringAsync() {
-        var firstName = await GetFirstNameAsync();
-        return "Hello " + firstName;
+        MyTextBlock.Text = task.Result;
     }
 
-    private Task<string> GetFirstNameAsync() {
-        return Task.Run(() => {
-            Thread.Sleep(100);
-            return "Zoltan";
-        });
+    public static async Task<string> GetStringAsync() {
+        await Task.Delay(3000);
+        return "Result";
     }
 }
-
